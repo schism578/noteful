@@ -22,7 +22,7 @@ class App extends Component {
       <header className='App-header'>
         <sidebar>
           <Route path='/' component={MainSidebar} />
-          <Route path='/folders/folders-id' 
+          <Route path='/folders/:folders-id' 
             render={(routeProps) =>
               <FoldersSidebar
                 aFolders={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
@@ -39,7 +39,7 @@ class App extends Component {
         </sidebar>
         <main>
           <Route path='/' component={Main} />
-          <Route path='/folders/folder-id' 
+          <Route path='/folders/:folder-id' 
             render={(routeProps) =>
               <FoldersMain
                 aFolders={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}

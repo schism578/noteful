@@ -1,0 +1,15 @@
+ul {
+    list-style-type: none;
+}
+
+.folder-item {
+    width: 20vw;
+    height: 7vh;
+    padding-bottom: 15px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.folder-item:active {
+    background-color: aqua;
+}

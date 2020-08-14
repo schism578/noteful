@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+//import Notes from '../notes/notes';
 import Store from '../store';
+import './folders.css';
 
 export default class Folders extends Component {
     static defaultProps = {
@@ -16,10 +18,11 @@ export default class Folders extends Component {
                         <ul>
                             <li>
                             {Store.folders.map(folder => 
-                                        <li key={folder.id}>
+                                        <li key={folder.id} className='folder-item'>
                                             
                                             <NavLink 
-                                            to={'/folders'}
+                                            to={`/folders/${folder.id}`}
+                                            //onClick={}
                                             >
                                                 <h3>{folder.name}</h3>
                                             </NavLink>
