@@ -1,43 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import Store from '../store';
 
 
-export default function Notes(props) {
-    static defaultProps = {
-        id,
-        name,
-        modified,
-        content,
-        onClickMain: () => {},
-    }
-
-    render() {
+export default function Notes() {
         return (
             <div>
-                <header>
-                    <h1>Noteful
-                        <a
-                        href={/main}
-                        rel='noopener noreferrer'>
-                        </a>
-                    </h1>
-                </header>
                     <main>
-                        <sidebar>
-                            <ul>
-                                <li>
-                                    {/*FOLDER OF CURRENTLY SELECTED NOTE*/}
-                                </li>
-                            </ul>
-                            <button 
-                                type='button' onClick={() => props.onClickMain(props.id)}>Back</button>
-                        </sidebar>
-
                         <section>
                             <div>
-                                <h2>
-                                    <a href={props.name} />
-                                </h2>
-                                <span>{props.modified}</span>
+                                <ul className='NoteList'>
+                                    {Store.notes.map(note => 
+                                        <li key={note.id}>
+                                            
+                                            <NavLink 
+                                            to={'/notes'}>
+                                                <h3>{note.name}</h3>
+                                            </NavLink>
+                                            Date modified on {note.modified}
+                                        </li>
+                                    )}
+                                </ul>
                                 {/* THIS IS FOR LATER
                                 <button
                                     className='notes-id'
@@ -46,10 +29,15 @@ export default function Notes(props) {
                                     Delete
                                 </button>*/}
                             </div>
-                            <p>{props.content}</p>
                         </section>
                     </main>
             </div>
         )
-    }
+}
+
+Notes.defaultProps = {
+    id: 0,
+    name: '',
+    modified: '',
+    onClickMain: () => {},
 }

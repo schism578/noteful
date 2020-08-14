@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Folders from '../src/folders/folders';
-import Notes from '../src/notes/notes';
+import { NavLink } from 'react-router-dom';
+import Folders from '../folders/folders';
+import Notes from '../notes/notes';
 
 
 
@@ -11,24 +12,20 @@ export default class Main extends Component {
         return (
             <div>
                 <header>
-                    <h1>Noteful
-                        <a
-                        href={'/'}
+                        <NavLink
+                        to={'/'}
                         rel='noopener noreferrer'>
-                        </a>
-                    </h1>
+                            <h1>Noteful</h1>
+                        </NavLink>
                 </header>
                     <main>
-                    <sidebar>
+                    <div>
                         <ul>
                             <li>
                                 <Folders />
                             </li>
                         </ul>
-                        <button 
-                            type='button' 
-                            onClick={() => this.props.onClickMain(this.props.id)}>Back</button>
-                    </sidebar>
+                    </div>
 
                         <section>
                             <Notes />
