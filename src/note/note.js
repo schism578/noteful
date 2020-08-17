@@ -1,20 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default function Note(props) {
+export default function Note({ note }) {
         return (
             <div>
-                <li key={props.id}
+                <li key={note.id}
                     className='note-item'>
                     <NavLink 
                         to={'/note'}>
-                        <h3>{props.name}</h3>
+                        <h3>{note.name}</h3>
                     </NavLink>
-                        Date modified on {props.modified}
+                        Date modified on {note.modified}
                 </li>
                 <button
                     className='notes-id'
-                    onClick={() => props.onClickDelete(props.id)}
+                    onClick={() => note.onClickDelete(note.id)}
                 >
                     Delete
                 </button>

@@ -1,31 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 //import Notes from '../notes/notes';
 import Store from '../store';
 import './folder.css';
 
-export default class Folders extends Component {
-    static defaultProps = {
-        id: '',
-        name: '',
-        onClickMain: () => {},
-    }
+export default function Folder({ folder }) {
+    const folders = [];
 
-    render() {
         return (
             <div>
-                <li key={Store.folder.id} className='folder-item'>                        
+                <li key={folder.id} className='folder-item'>                        
                     <NavLink 
-                        to={`/folders/${Store.folders.id}`}
+                        to={`/folders/${folder.id}`}
                             //onClick={}
                     >
-                        <h3>{Store.folder.name}</h3>
+                        <h3>{folder.name}</h3>
                     </NavLink>
                 </li>
                     <button 
-                        type='button' onClick={(props) => props.onClickMain(props.id)}>Go Back</button>
+                        type='button' onClick={(props) => props.onClickMain(folder.id)}>Go Back</button>
             </div>
         )
-    }
 }
 

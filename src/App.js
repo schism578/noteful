@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import FolderList from './folder-list/folder-list';
-import FolderPage from './folder-page/folder-page';
+//import FolderPage from './folder-page/folder-page';
 import NoteList from './note-list/note-list';
-import NotePage from './note-page/note-page';
+//import NotePage from './note-page/note-page';
 import './App.css';
 
 class App extends Component {
@@ -42,13 +42,13 @@ class App extends Component {
                 />
                 }
             />
-            <Route path='/notes/:note-id' 
+            {/*<Route path='/notes/:note-id' 
                 render={(routeProps) =>
                 <NotePage
                     aNotes={this.state.notes.find(note => note.id === routeProps.match.params.noteId)}
                 />
                 }
-            />  
+            />*/}
             </div>
       </header>
     </div>
@@ -56,4 +56,4 @@ class App extends Component {
 }
 }
 
-export default App;
+export default withRouter(App);

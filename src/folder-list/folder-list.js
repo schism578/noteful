@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom'
 
-export default function FolderList() {
+export default function FolderList({ folder }) {
     const folders = [];
     const folderList = folders.map(folder => (
 		<li key={folder.id}>
