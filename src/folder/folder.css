@@ -5,11 +5,23 @@ ul {
 .folder-item {
     width: 20vw;
     height: 7vh;
+    margin-bottom: 8px;
     padding-bottom: 15px;
-    text-align: center;
+    padding-left: 4px;
+    text-align: left;
     border: 1px solid black;
+    border-radius: 3px;
+    background-color: rgb(138, 143, 145);
+}
+
+.folder-title {
+    color: rgb(0, 0, 0);
 }
 
 .folder-item:active {
     background-color: aqua;
+}
+
+.folder-title:hover {
+        color: white;
 }

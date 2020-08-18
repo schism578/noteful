@@ -12,7 +12,7 @@ export default function Folder(props) {
         <div>
             <li key={id} className='folder-item'>
                 <NavLink to={`/folders/${id}`}>
-                    <h3>{name}</h3>
+                    <h3 className='folder-title'>{name}</h3>
                 </NavLink>
             </li>
         </div>

@@ -1,0 +1,23 @@
+.App {
+    min-height: 100vh;
+    min-width: 100vw;
+    background: rgb(135, 193, 240);
+    padding: 8px;
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .App-header h1 {
+    margin: 10px;
+    color: #f6f6f6;
+    font-size: 32px;
+    padding: 0 14px 10px;
+  }
+
+  .App-title:hover {
+      color: darkblue;
+  }
+
+  .folder-list, .note-list {
+      display: inline-flex;
+  }

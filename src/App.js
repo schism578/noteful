@@ -16,11 +16,11 @@ class App extends Component {
         <div className='App'>
             <header className='App-header'>
             <NavLink to={`/`}>
-                    <h1>Noteful</h1>
+                    <h1 className='App-title'>Noteful</h1>
                 </NavLink>
             </header>
             <ul>
-            <div>
+            <div className='folder-list'>
                 <Route exact path='/' component={() => <FolderList folders={store.folders} />} />
                 <Route
                     path='/folder/:folderId'
@@ -31,7 +31,7 @@ class App extends Component {
                     }
                 />
             </div>
-            <div>
+            <div className='note-list'>
                 <Route exact path='/' component={() => <NoteList notes={store.notes} />} />
                 <Route
                     path='/folder/:folderId'
