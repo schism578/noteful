@@ -1,59 +1,52 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+//import { Route } from 'react-router-dom';
 import FolderList from './folder-list/folder-list';
-//import FolderPage from './folder-page/folder-page';
 import NoteList from './note-list/note-list';
-//import NotePage from './note-page/note-page';
+import Store from './store';
 import './App.css';
 
 class App extends Component {
   state = {
-    folders: [],
-    notes: [],
+    store: Store,
   }
 
   render() {
+    const { store } = this.state
     return (
         <div className='App'>
-        <header className='App-header'>
-            <div className='folder-route'>
-            <Route path='/' component={FolderList} />
-            <Route path='/folders/:folders-id' 
-                render={(routeProps) =>
-                <FolderList
-                    aFolders={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
-                />
+            <header className='App-header'>
+                <h1>Noteful</h1>
+            </header>
+            <ul>
+            <li>
+                {store.folders.map(folder => (
+                    <FolderList
+                    folders={store.folders}
+                    key={folder.id}
+                    id={folder.id}
+                    name={folder.name}
+                    //notes={folder.folderId.map(id => store.notes[id])}
+                    />
+                )
+                )
                 }
-            />
-            {/*<Route path='/folders/:folders-id' 
-                render={(routeProps) =>
-                <FolderPage
-                    aNotes={this.state.notes.find(note => note.id === routeProps.match.params.noteId)}
-                />
+            </li>
+            <li>
+                {store.notes.map(note => (
+                    <NoteList
+                    notes={store.notes}
+                    key={note.id}
+                    id={note.id}
+                    name={note.name}
+                    />
+                )
+                )
                 }
-            />*/}
-            </div>
-            <div className='note-route'>
-            <Route path='/' component={NoteList} />
-            <Route path='/notes/:note-id' 
-                render={(routeProps) =>
-                <NoteList
-                    aFolders={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
-                />
-                }
-            />
-            {/*<Route path='/notes/:note-id' 
-                render={(routeProps) =>
-                <NotePage
-                    aNotes={this.state.notes.find(note => note.id === routeProps.match.params.noteId)}
-                />
-                }
-            />*/}
-            </div>
-      </header>
-    </div>
+            </li>
+            </ul>
+        </div>
   );
 }
 }
 
-export default withRouter(App);
+export default App;

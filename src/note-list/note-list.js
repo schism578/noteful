@@ -1,19 +1,20 @@
 import React from 'react';
 import Note from '../note/note';
-import Store from '../store';
 
-export default function NoteList({ note }) {
-  const filteredNotes = Store.folderId
-  ? Store.notes.filter(note => note.folder_id === parseInt(Store.folderId))
-  : Store.notes
+export default function NoteList(props) {
+  const {
+    id,
+    name,
+  } = props;
 
-const noteCards = filteredNotes.map(note => (
-  <Note key={note.id} note={note} />
-))
-
-return <>{noteCards}</>
+return (
+    <section className='note-list'>
+        <li className='list-notes'>
+                <Note
+                key={id}
+                name={name}
+              />
+        </li>
+    </section>
+)
 }
-
-    NoteList.defaultProps = {
-      notes: [],
-    }

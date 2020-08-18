@@ -1,23 +1,19 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom'
+import Folder from '../folder/folder';
 
-export default function FolderList({ folder }) {
-    const folders = [];
-    const folderList = folders.map(folder => (
-		<li key={folder.id}>
-			<NavLink to={`/folder/${folder.id}`} activeClassName="active">
-				{folder.name}
-			</NavLink>
-		</li>
-	))
+export default function FolderList(props) {
+    const {
+        id,
+        name,
+      } = props;
 
-	return (
-		<aside>
-			<h2>Folders</h2>
-			<Link to="/add/folder">Add Folder +</Link>
-			<nav>
-				<ul>{folderList}</ul>
-			</nav>
-		</aside>
-	)
+    return (
+        <ul>
+            <Folder
+            key={id}
+            name={name}
+            folder={props.folder}
+            />
+        </ul>
+  )
 }
