@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import FolderList from './folder-list/folder-list';
 import NoteList from './note-list/note-list';
 import Store from './store';
@@ -18,31 +18,28 @@ class App extends Component {
                 <h1>Noteful</h1>
             </header>
             <ul>
-            <li>
-                {store.folders.map(folder => (
+            <div>
+                <Route path='/' component={() => <FolderList folders={store.folders} />} />
+                <Route
+                    path='/folder/:folderId'
+                    render={(routeProps) =>
                     <FolderList
-                    folders={store.folders}
-                    key={folder.id}
-                    id={folder.id}
-                    name={folder.name}
-                    //notes={folder.folderId.map(id => store.notes[id])}
+                        aFolder={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
                     />
-                )
-                )
-                }
-            </li>
-            <li>
-                {store.notes.map(note => (
+                    }
+                />
+            </div>
+            <div>
+                <Route path='/' component={() => <NoteList notes={store.notes} />} />
+                <Route
+                    path='/folder/:folderId'
+                    render={(routeProps) =>
                     <NoteList
-                    notes={store.notes}
-                    key={note.id}
-                    id={note.id}
-                    name={note.name}
+                        aNote={this.state.notes.find(note => note.id === routeProps.match.params.noteId)}
                     />
-                )
-                )
-                }
-            </li>
+                    }
+                />
+            </div>
             </ul>
         </div>
   );
