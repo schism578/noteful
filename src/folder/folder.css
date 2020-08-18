@@ -22,6 +22,10 @@ ul {
     background-color: aqua;
 }
 
+.folder-highlight {
+    background-color: lightblue;
+}
+
 .folder-title:hover {
         color: white;
 }

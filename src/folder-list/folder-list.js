@@ -3,17 +3,18 @@ import Folder from '../folder/folder';
 
 export default function FolderList(props) {
     const {
-        id,
-        name,
+        aFolder,
+        folders,
       } = props;
 
     return (
       <ul>
-      {props.folders.map(folder => (
+      {folders.map(folder => (
             <Folder
-            key={id}
-            name={name}
+            key={folder.id}
+            name={folder.name}
             folder={folder}
+            highlight={aFolder && folder.id === aFolder.id}
             />
       ))
       }

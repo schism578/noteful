@@ -3,16 +3,15 @@ import Note from '../note/note';
 
 export default function NoteList(props) {
   const {
-    id,
-    name,
+    notes,
   } = props;
 
 return (
   <ul>
-    {props.notes.map(note => (
+    {notes.map(note => (
           <Note
-          key={id}
-          name={name}
+          key={note.id}
+          name={note.name}
           note={note}
           />
       )
