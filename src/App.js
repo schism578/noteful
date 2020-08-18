@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import FolderList from './folder-list/folder-list';
 import NoteList from './note-list/note-list';
 import Store from './store';
@@ -15,11 +15,13 @@ class App extends Component {
     return (
         <div className='App'>
             <header className='App-header'>
-                <h1>Noteful</h1>
+            <NavLink to={`/`}>
+                    <h1>Noteful</h1>
+                </NavLink>
             </header>
             <ul>
             <div>
-                <Route path='/' component={() => <FolderList folders={store.folders} />} />
+                <Route exact path='/' component={() => <FolderList folders={store.folders} />} />
                 <Route
                     path='/folder/:folderId'
                     render={(routeProps) =>
@@ -30,7 +32,7 @@ class App extends Component {
                 />
             </div>
             <div>
-                <Route path='/' component={() => <NoteList notes={store.notes} />} />
+                <Route exact path='/' component={() => <NoteList notes={store.notes} />} />
                 <Route
                     path='/folder/:folderId'
                     render={(routeProps) =>

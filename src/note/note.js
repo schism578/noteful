@@ -5,7 +5,7 @@ export default function Note(props) {
     const {
         name, 
         id,
-    } = props;
+    } = props.note;
 
     return (
         <div>
@@ -13,7 +13,7 @@ export default function Note(props) {
                 <NavLink to={`/notes/${id}`}>
                     <h3>{name}</h3>
                 </NavLink>
-        </li>
+            </li>
         </div>
   )
 } 

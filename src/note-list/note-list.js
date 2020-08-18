@@ -8,13 +8,16 @@ export default function NoteList(props) {
   } = props;
 
 return (
-    <section className='note-list'>
-        <li className='list-notes'>
-                <Note
-                key={id}
-                name={name}
-              />
-        </li>
-    </section>
+  <ul>
+    {props.notes.map(note => (
+          <Note
+          key={id}
+          name={name}
+          note={note}
+          />
+      )
+    )
+  }
+  </ul>
 )
 }

@@ -8,12 +8,16 @@ export default function FolderList(props) {
       } = props;
 
     return (
-        <ul>
+      <ul>
+      {props.folders.map(folder => (
             <Folder
             key={id}
             name={name}
-            folder={props.folder}
+            folder={folder}
             />
-        </ul>
+      ))
+      }
+      </ul>
+
   )
 }
