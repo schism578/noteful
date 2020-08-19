@@ -18,10 +18,6 @@ ul {
     color: rgb(0, 0, 0);
 }
 
-.folder-item:active {
-    background-color: aqua;
-}
-
 .folder-highlight {
     background-color: lightblue;
 }

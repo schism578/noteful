@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, NavLink } from 'react-router-dom';
+//import Folder from './folder/folder';
 import FolderList from './folder-list/folder-list';
 import NoteList from './note-list/note-list';
 import NotePage from './note-page/note-page';
@@ -29,6 +30,15 @@ class App extends Component {
                     <FolderList
                         folders={store.folders}
                         aFolder={store.folders.find(folder => folder.id === routeProps.match.params.folderId)}
+                    />
+                    }
+                />
+                <Route
+                    path='/notes/:notesId'
+                    render={(routeProps) =>
+                    <FolderList
+                        folders={store.folders}
+                        aFolder={store.folders.find(folder => folder.id === routeProps.match.params.folderId)} 
                     />
                     }
                 />

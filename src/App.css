@@ -2,7 +2,6 @@
     min-height: 100vh;
     min-width: 100vw;
     background: rgb(135, 193, 240);
-    padding: 8px;
     display: inline-flex;
     flex-direction: column;
   }

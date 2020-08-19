@@ -9,7 +9,7 @@
   }
 
 .note-title {
-    padding: 0 0 2px 2px;
+    padding: 0 0 2px 8px;
     color: rgb(0, 0, 0);
 }
 
@@ -18,5 +18,5 @@
 }
 
 .mod-date {
-    padding: 0 0 4px 4px;
+    padding: 0 0 4px 8px;
 }
