@@ -36,10 +36,10 @@ class App extends Component {
                 <Route
                     path='/notes/:notesId'
                     render={(routeProps) =>
-                    <FolderList
-                        folders={store.folders}
-                        aFolder={store.folders.find(folder => folder.id === routeProps.match.params.folderId)} 
-                    />
+                    <NotePage
+                        note={store.notes.find(note => note.id === routeProps.match.params.notesId)}
+                        folder={store.folders.find(folder => folder.id === (store.notes.find(note => note.id === routeProps.match.params.notesId)).folderId) }
+                        />
                     }
                 />
             </div>

@@ -10,7 +10,7 @@ export default function Folder(props) {
 
     return (
         <div>
-            <li key={id} className={`folder-item ${props.highlight} ? 'folder-highlight'}`}>
+            <li key={id} className={`folder-item ${props.highlight} ? 'folder-highlight' : ''`}>
                 <NavLink to={`/folders/${id}`}>
                     <h3 className='folder-title'>{name}</h3>
                 </NavLink>
