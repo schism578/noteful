@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-//import FolderList from '../folder-list/folder-list';
-//import Note from '../note/note';
-//import './folder-page.css';
+import './folder-page.css';
 
 export default function FolderPage(props) {
     const {

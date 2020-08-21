@@ -9,15 +9,15 @@ export default function FolderList(props) {
 
     return (
       <ul>
-      {folders.map(folder => (
-            <Folder
-            key={folder.id}
-            name={folder.name}
-            folder={folder}
-            highlight={aFolder && folder.id === aFolder.id}
-            />
-      ))
-      }
+        {folders.map(folder => (
+              <Folder
+              key={folder.id}
+              name={folder.name}
+              folder={folder}
+              highlight={aFolder && folder.id === aFolder.id}
+              />
+        ))
+        }
       </ul>
 
   )
