@@ -52,7 +52,7 @@ class App extends Component {
         }
         return res.json()
       })
-      .then(this.setNotes)
+      .then(data => this.setFolders(data))
       .catch(error => this.setState({ error }))
     
       fetch(Store.notes_API_ENDPOINT, {
@@ -67,7 +67,7 @@ class App extends Component {
           }
           return res.json()
         })
-        .then(this.setNotes)
+        .then(data => this.setNotes(data))
         .catch(error => this.setState({ error }))
   }
 
@@ -89,15 +89,15 @@ class App extends Component {
                     <div className='folder-list'>
                         <Route 
                             exact path='/' 
-                            component={() => <FolderList folders={this.folders} />} 
+                            component={() => <FolderList folders={this.state.folders} />} 
                         />
                         <Route
                             path='/folders/:folderId'
                             //component={FolderList}
                             render={(routeProps) =>
                             <FolderList
-                                folders={this.folders}
-                            aFolder={this.folders.find(folder => folder.id === routeProps.match.params.folderId)}
+                                folders={this.state.folders}
+                                aFolder={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
                             />
                             }
                         />
@@ -105,8 +105,8 @@ class App extends Component {
                             path='/notes/:notesId'
                             render={(routeProps) =>
                             <FolderPage
-                                note={this.notes.find(note => note.id === routeProps.match.params.notesId)}
-                                folder={this.folders.find(folder => folder.id === (this.notes.find(note => note.id === routeProps.match.params.notesId)).folderId) }
+                                note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)}
+                                folder={this.state.folders.find(folder => folder.id === (this.notes.find(note => note.id === routeProps.match.params.notesId)).folderId) }
                             />
                             }
                         />
@@ -115,7 +115,7 @@ class App extends Component {
                     <div className='note-list'>
                         <Route 
                             exact path='/' 
-                            component={() => <NoteList notes={this.notes} />} 
+                            component={() => <NoteList notes={this.state.notes} />} 
                         />
                         <Route
                             path='/folders/:folderId'
@@ -130,7 +130,7 @@ class App extends Component {
                             path='/notes/:notesId'
                             render={(routeProps) =>
                             <NotePage
-                                note={this.notes.find(note => note.id === routeProps.match.params.notesId)} 
+                                note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)} 
                                 />
                             }
                         />

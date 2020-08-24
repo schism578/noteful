@@ -6,4 +6,4 @@ const FoldersContext = React.createContext({
   deleteFolder: () => {},
 })
 
-export default BookmarksContext;
+export default FoldersContext;

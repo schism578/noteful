@@ -2,6 +2,7 @@ import React from 'react';
 import Folder from '../folder/folder';
 
 export default function FolderList(props) {
+  console.log(props)
     const {
         aFolder,
         folders,
