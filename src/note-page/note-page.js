@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
+import Note from '../note/note';
 import './note-page.css';
 
 export default function NotePage(props) {
@@ -10,12 +11,9 @@ export default function NotePage(props) {
     return (
         <div>
             <div>
-                <li key={note.id} className='Note'>
-                    <NavLink to={`/notes/${note.id}`}>
-                        <h3 className='note-title'>{note.name}</h3>
-                    </NavLink>
-                    <p className='mod-date'>{note.modified}</p>
-                </li>
+                <Note 
+                    name={note.name}
+                    note={note}/>
             </div>
                 <p className='note-content'>{note.content}</p>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+//import Folder from '../folder/folder';
 import './folder-page.css';
 
 export default function FolderPage(props) {

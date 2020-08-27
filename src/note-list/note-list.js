@@ -1,9 +1,11 @@
 import React from 'react';
-import NotesContext from '../NotesContext';
+import AppContext from '../appContext';
+import { NavLink } from 'react-router-dom';
 import Note from '../note/note';
+import NavButton from '../nav-button/nav-button';
 
 export default class NoteList extends React.Component {
-  static contextType = NotesContext;
+  static contextType = AppContext;
   static defaultProps = {
     notes: []
   };
@@ -11,17 +13,30 @@ export default class NoteList extends React.Component {
   render() {
     const { notes } = this.context
     return (
-      <ul>
-        {notes.map(note => (
-              <Note
-              key={note.id}
-              name={note.name}
-              note={note}
-              />
+      <div>
+        <ul>
+          {notes.map(note => (
+                <Note
+                key={note.id}
+                name={note.name}
+                note={note}
+                />
+            )
           )
-        )
-      }
-      </ul>
+        }
+        </ul>
+        <div className='NoteList__button-container'>
+        <NavButton
+          tag={NavLink}
+          to='/add-note'
+          type='button'
+          className='NoteList__add-note-button'
+        >
+          <br />
+          Add Note
+        </NavButton>
+      </div>
+    </div>
     )
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import NotesContext from '../NotesContext';
+import AppContext from '../appContext';
 import Store from '../store';
 import './note.css';
 
@@ -38,7 +38,7 @@ export default function Note(props) {
       }  
 
     return (
-        <NotesContext.Consumer>
+        <AppContext.Consumer>
             {(context) => (
             <div>
                 <li key={id} className='Note'>
@@ -62,6 +62,6 @@ export default function Note(props) {
                 </li>
             </div>
         )}
-    </NotesContext.Consumer>
+    </AppContext.Consumer>
     )
 } 
