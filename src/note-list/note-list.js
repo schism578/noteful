@@ -6,16 +6,15 @@ import NavButton from '../nav-button/nav-button';
 
 export default class NoteList extends React.Component {
   static contextType = AppContext;
-  static defaultProps = {
-    notes: []
-  };
 
   render() {
     const { notes } = this.context
+    const filteredNotes = this.props.match ? notes.filter(note => note.folderId === this.props.match.params.folderId) : notes
+
     return (
       <div>
         <ul>
-          {notes.map(note => (
+          {filteredNotes.map(note => (
                 <Note
                 key={note.id}
                 name={note.name}

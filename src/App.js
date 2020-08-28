@@ -158,10 +158,7 @@ class App extends Component {
                 </header>
                 <ul>
                     <div className='folder-list'>
-                        <Route 
-                            exact path='/' 
-                            component={() => <FolderList folders={this.state.folders} />} 
-                        />
+                        <Route exact path='/' component={() => <FolderList folders={this.state.folders} />} />
                         <Route
                             path='/folders/:folderId'
                             //component={FolderList}
@@ -171,10 +168,6 @@ class App extends Component {
                                 aFolder={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
                             />
                             }
-                        />
-                        <Route 
-                          path="/add-folder" 
-                          component={FolderPage} 
                         />
                         <Route
                             path='/notes/:notesId'
@@ -195,15 +188,6 @@ class App extends Component {
                         <Route
                             path='/folders/:folderId'
                             component={NoteList}
-                            //render={(routeProps) =>
-                            //<NoteList
-                            //    notes={store.notes.filter(note => note.folderId === routeProps.match.params.folderId)}
-                            ///>
-                            //}
-                        />
-                        <Route 
-                          path="/add-note" 
-                          component={NotePage} 
                         />
                         <Route path="/add-folder" component={AddFolder} />
                         <Route path="/add-note" component={AddNote} />

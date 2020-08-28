@@ -1,8 +1,8 @@
 import React from 'react';
 import Store from '../store';
-import Context from '../appContext'
-import PropTypes from 'prop-types'
-//import './AddNote.css'
+import Context from '../appContext';
+import PropTypes from 'prop-types';
+import '../note-page/note-page.css';
 
 export default class AddNote extends React.Component {
     static contextType = Context
@@ -10,7 +10,7 @@ export default class AddNote extends React.Component {
     addNewNote = note => {
         note.modified = new Date(note.modified);
 
-        fetch(`${Store.notes_API_ENDPOINT}/notes`, {
+        fetch(`${Store.notes_API_ENDPOINT}/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ export default class AddNote extends React.Component {
         const newNote = {
         name: e.target.name.value,
         content: e.target.content.value,
-        folder_id: e.target.folders.value,
+        folderId: e.target.folders.value,
         modified: new Date(),
         }
         console.log(newNote);
@@ -44,15 +44,23 @@ export default class AddNote extends React.Component {
         this.props.history.push('/');
     }
 
+    validateName = () => {
+        if (this.context.newNote.name.value.length === 0) {
+          return 'Name is required'
+        }
+      }
+
     render () {
         return (
-            <form className="registration" onSubmit={e => this.handleSubmit(e)}>
-                <h2>Create a Note:</h2>
+            <form className="registration" onSubmit={e => this.handleFormSubmit(e)}>
+                <h2>Create a Note:
+                {this.context.newNote.name.touched && <p>{this.validateName()}</p>}
+                </h2>
                     <input type="text" className="note_name_input"
-                    name="name" id="name" onChange={e => this.updateNewNoteData(e.target.name, e.target.value)}/>
+                    name="name" id="name" />
                 <h2>Write the Note:</h2>
                     <input type="text" className="note_content_input"
-                    name="content" id="content" onChange={e => this.updateNewNoteData(e.target.name, e.target.value)}/>
+                    name="content" id="content" />
                 <label htmlFor="folders">Select a Folder:</label>
                 <select
                     name="folders"

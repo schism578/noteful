@@ -8,7 +8,7 @@ export default class AddFolder extends Component {
   static contextType = Context;
 
     addFolder = (name) => {
-        fetch(`${Store.folders_API_ENDPOINT}/folders/`, {
+        fetch(`${Store.folders_API_ENDPOINT}/`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -22,7 +22,7 @@ export default class AddFolder extends Component {
     
       handleSubmit(event) {
         event.preventDefault();
-        const newFolder = event.target.newFolder.value;
+        const newFolder = event.target.name.value;
         this.addFolder(newFolder);
         this.props.history.goBack();
       }
@@ -37,7 +37,7 @@ export default class AddFolder extends Component {
             <form className="registration" onSubmit={e => this.handleSubmit(e)}>
                 <h2>Create a Folder:</h2>
                     <input type="text" className="folder_name_input"
-                    name="name" id="name" onChange={e => this.updateNewFolderName(e)}/>
+                    name="name" id="name" onChange={e => this.updateFolderName(e)}/>
                 <div className="folder__button__group">
                     <button
                         type="submit"
