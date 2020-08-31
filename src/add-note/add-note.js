@@ -1,11 +1,12 @@
 import React from 'react';
 import Store from '../store';
-import Context from '../appContext';
+import AppContext from '../appContext';
 import PropTypes from 'prop-types';
+import ValidationError from '../ValidationError';
 import '../note-page/note-page.css';
 
 export default class AddNote extends React.Component {
-    static contextType = Context
+    static contextType = AppContext
 
     addNewNote = note => {
         note.modified = new Date(note.modified);
@@ -52,15 +53,41 @@ export default class AddNote extends React.Component {
 
     render () {
         return (
-            <form className="registration" onSubmit={e => this.handleFormSubmit(e)}>
-                <h2>Create a Note:
-                {this.context.newNote.name.touched && <p>{this.validateName()}</p>}
-                </h2>
-                    <input type="text" className="note_name_input"
-                    name="name" id="name" />
+            <>
+                <header>
+                    <h2 className="add-note-header">Add A New Note:</h2>
+                </header>
+                    <form
+                    className="add-note-form"
+                    onSubmit={e => this.handleFormSubmit(e)}
+                    >
+                    <label htmlFor="name">
+                        Name
+                        {this.context.newNote.name.touched && (
+                            <ValidationError message={this.validateFolderName} />
+                        )}
+                    </label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        aria-required="true"
+                        aria-label="Name"
+                        onChange={e =>
+                        this.context.updateNewNoteData(e.target.name, e.target.value)
+                        }
+                    />
                 <h2>Write the Note:</h2>
-                    <input type="text" className="note_content_input"
-                    name="content" id="content" />
+                    <input 
+                        type="text"
+                        name="content"
+                        id="content"
+                        aria-required="true"
+                        aria-label="Description"
+                        onChange={e =>
+                          this.context.updateNewNoteData(e.target.name, e.target.value)
+                        } 
+                    />
                 <label htmlFor="folders">Select a Folder:</label>
                 <select
                     name="folders"
@@ -74,11 +101,12 @@ export default class AddNote extends React.Component {
                     <button
                         type="submit"
                         className="note__button"
-                        >
-                        Save
+                        disabled={this.validateName()}>
+                    Save
                     </button>
                 </div>
             </form>
+        </>
         )
     }
 }

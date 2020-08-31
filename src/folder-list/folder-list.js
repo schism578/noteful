@@ -4,7 +4,6 @@ import Folder from '../folder/folder';
 import NavButton from '../nav-button/nav-button';
 
 export default function FolderList(props) {
-  console.log(props.match)
     const {
         aFolder,
         folders,

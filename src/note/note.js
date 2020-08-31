@@ -4,39 +4,37 @@ import AppContext from '../appContext';
 import Store from '../store';
 import './note.css';
 
-export default function Note(props) {
-    const {
-        id,
-        name,
-        modified,
-    } = props.note;
+export default class Note extends React.Component {
+  static contextType = AppContext;
 
-    function deleteNoteRequest(noteId, cb) {
-        fetch(Store.notes_API_ENDPOINT + `/${noteId}`, {
-          method: 'DELETE',
-          headers: {
-            'content-type': 'application/json',
-          }
+    handleClickDelete = e => {
+      e.preventDefault()
+      const noteId = this.props.id
+      console.log(noteId)
+
+      fetch(`${Store.notes_API_ENDPOINT}/${noteId}`, {
+        method: 'DELETE',
+        headers: {
+          'content-type': 'application/json'
+        },
+      })
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+          // return res.json()
         })
-          .then(res => {
-            if (!res.ok) {
-              // get the error message from the response,
-              return res.json().then(error => {
-                // then throw it
-                throw error
-              })
-            }
-            return res.json()
-          })
-          .then(data => {
-            console.log({ data })
-            cb(noteId)
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      }  
+        .then(() => {
+            this.context.deleteNote(noteId)
+          // allow parent to perform extra behaviour
+          // this.props.onDeleteNote(noteId)
+        })
+        .catch(error => {
+          console.error({ error })
+        })
+    }
 
+    render() {
+      const { name, id, modified } = this.props
     return (
         <AppContext.Consumer>
             {(context) => (
@@ -47,15 +45,11 @@ export default function Note(props) {
                     </NavLink>
                     <p className='mod-date'>{modified}</p>
                     <div className='Note-buttons'>
-                        <button
-                            className='Note-description'
-                            onClick={() => {
-                                deleteNoteRequest(
-                                props.id,
-                                context.deleteNote,
-                                )
-                            }}
-                        >
+                    <button
+                      className='Note__delete'
+                      type='button'
+                      onClick={this.handleClickDelete}
+                    >
                             Delete
                         </button>
                     </div>
@@ -64,4 +58,5 @@ export default function Note(props) {
         )}
     </AppContext.Consumer>
     )
+  }
 } 

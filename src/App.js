@@ -5,8 +5,8 @@ import FolderList from './folder-list/folder-list';
 import NoteList from './note-list/note-list';
 import NotePage from './note-page/note-page';
 import FolderPage from './folder-page/folder-page';
-import AddFolder from './add-folders-notes/add-folder';
-import AddNote from './add-folders-notes/add-note';
+import AddFolder from './add-folder/add-folder';
+import AddNote from './add-note/add-note';
 import ErrorBoundary from './error-boundary';
 import Store from './store';
 import './App.css';
@@ -52,7 +52,6 @@ class App extends Component {
   }
 
   deleteNote = noteId => {
-    console.log(noteId)
     const newNotes = this.state.notes.filter(nt =>
       nt.id !== noteId
     )
@@ -128,7 +127,6 @@ class App extends Component {
   }
 
   handleDeleteNote = noteId => {
-    console.log('Firing!')
     this.setState({
       notes: this.state.notes.filter(note => note.id !== noteId),
     })
@@ -146,7 +144,6 @@ class App extends Component {
       handleAddNote: this.handleAddNote,
       updateNewNoteData: this.updateNewNoteData
     }
-    //const { store } = this.state
     return (
         <div className='App'>
           <ErrorBoundary>
@@ -161,7 +158,6 @@ class App extends Component {
                         <Route exact path='/' component={() => <FolderList folders={this.state.folders} />} />
                         <Route
                             path='/folders/:folderId'
-                            //component={FolderList}
                             render={(routeProps) =>
                             <FolderList
                                 folders={this.state.folders}
@@ -178,9 +174,9 @@ class App extends Component {
                             />
                             }
                         />
-                    </div>
-                <AppContext.Provider value={contextValue}>
-                    <div className='note-list'>
+                      </div>
+                    <AppContext.Provider value={contextValue}>
+                      <div className='note-list'>
                         <Route 
                             exact path='/' 
                             component={() => <NoteList notes={this.state.notes} />} 
@@ -199,8 +195,8 @@ class App extends Component {
                                 />
                             }
                         />
-                    </div>
-                </AppContext.Provider>
+                      </div>
+                    </AppContext.Provider>
                 </ul>
             </main>
           </ErrorBoundary>
