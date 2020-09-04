@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import AppContext from '../appContext';
 import Store from '../store';
 import './note.css';
@@ -9,10 +10,9 @@ export default class Note extends React.Component {
 
     handleClickDelete = e => {
       e.preventDefault()
-      const noteId = this.props.id
-      console.log(noteId)
+      const noteId = this.props.note.id
 
-      fetch(`${Store.notes_API_ENDPOINT}/${noteId}`, {
+      fetch(`${Store.notes_API_ENDPOINT}/${this.props.note.id}`, {
         method: 'DELETE',
         headers: {
           'content-type': 'application/json'
@@ -21,12 +21,10 @@ export default class Note extends React.Component {
         .then(res => {
           if (!res.ok)
             return res.json().then(e => Promise.reject(e))
-          // return res.json()
         })
         .then(() => {
+            this.props.history.push('/')
             this.context.deleteNote(noteId)
-          // allow parent to perform extra behaviour
-          // this.props.onDeleteNote(noteId)
         })
         .catch(error => {
           console.error({ error })
@@ -34,7 +32,7 @@ export default class Note extends React.Component {
     }
 
     render() {
-      const { name, id, modified } = this.props
+      const { name, id, modified } = this.props.note
     return (
         <AppContext.Consumer>
             {(context) => (
@@ -59,4 +57,9 @@ export default class Note extends React.Component {
     </AppContext.Consumer>
     )
   }
-} 
+}
+
+Note.propTypes = {
+  history: PropTypes.object,
+  match: PropTypes.object
+}

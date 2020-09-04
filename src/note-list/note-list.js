@@ -1,6 +1,7 @@
 import React from 'react';
 import AppContext from '../appContext';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Note from '../note/note';
 import NavButton from '../nav-button/nav-button';
 
@@ -38,4 +39,8 @@ export default class NoteList extends React.Component {
     </div>
     )
   }
+}
+
+NoteList.propTypes = {
+  history: PropTypes.object
 }

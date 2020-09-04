@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Folder from '../folder/folder';
 import NavButton from '../nav-button/nav-button';
 
@@ -36,4 +37,8 @@ export default function FolderList(props) {
       </div>
     </div>
   )
+}
+
+FolderList.propTypes = {
+  history: PropTypes.object
 }

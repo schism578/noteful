@@ -1,11 +1,12 @@
 import React from 'react';
-//import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Note from '../note/note';
 import './note-page.css';
 
 export default function NotePage(props) {
     const {
         note,
+        history,
     } = props;
 
     return (
@@ -13,9 +14,15 @@ export default function NotePage(props) {
             <div>
                 <Note 
                     name={note.name}
-                    note={note}/>
+                    note={note}
+                    history={history}/>
             </div>
                 <p className='note-content'>{note.content}</p>
         </div>
     )
+}
+
+NotePage.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object
 }

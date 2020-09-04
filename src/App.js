@@ -191,7 +191,8 @@ class App extends Component {
                             path='/notes/:notesId'
                             render={(routeProps) =>
                             <NotePage
-                                note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)} 
+                                note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)}
+                                {...routeProps} 
                                 />
                             }
                         />
