@@ -2,16 +2,18 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../appContext';
+import { withRouter } from "react-router";
 //import { format } from 'date-fns';
 import Store from '../store';
 import './note.css';
 
-export default class Note extends React.Component {
+class Note extends React.Component {
   static contextType = AppContext;
 
     handleClickDelete = e => {
       e.preventDefault()
       const noteId = this.props.note.id
+      const { history } = this.props;
 
       fetch(`${Store.notes_API_ENDPOINT}/${this.props.note.id}`, {
         method: 'DELETE',
@@ -24,7 +26,7 @@ export default class Note extends React.Component {
             return res.json().then(e => Promise.reject(e))
         })
         .then(() => {
-            this.context.history.push('/')
+            history.push('/')
             this.context.deleteNote(noteId)
         })
         .catch(error => {
@@ -61,8 +63,9 @@ export default class Note extends React.Component {
 }
 
 Note.propTypes = {
-  onDeleteNote: PropTypes.func,
   id: PropTypes.string,
   name: PropTypes.string,
   modified: PropTypes.string
 }
+
+export default withRouter(Note);

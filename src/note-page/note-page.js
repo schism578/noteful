@@ -24,5 +24,5 @@ export default function NotePage(props) {
 
 NotePage.propTypes = {
     history: PropTypes.object,
-    match: PropTypes.object
+    note: PropTypes.object
 }

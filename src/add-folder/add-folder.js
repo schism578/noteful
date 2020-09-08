@@ -52,7 +52,7 @@ export default class AddFolder extends Component {
         <label htmlFor="newFolder">
           Name:
         {this.context.newFolder.touched && (
-          <ValidationError message={this.validateFolderName} />
+          <ValidationError message={this.validateFolderName()} />
           )}  
         </label>
         <input
@@ -75,5 +75,4 @@ export default class AddFolder extends Component {
 
 AddFolder.propTypes = {
   history: PropTypes.object,
-  name: PropTypes.string.isRequired
 }

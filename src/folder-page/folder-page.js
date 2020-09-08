@@ -22,6 +22,5 @@ export default function FolderPage(props) {
 }
 
 FolderPage.propTypes = {
-    history: PropTypes.object,
-    match: PropTypes.object
+    folder: PropTypes.object
 }

@@ -40,5 +40,6 @@ export default function FolderList(props) {
 }
 
 FolderList.propTypes = {
-  history: PropTypes.object
+  aFolder: PropTypes.object,
+  folders: PropTypes.array
 }
