@@ -94,11 +94,11 @@ export default class AddNote extends React.Component {
                                 type="text"
                                 name="content"
                                 id="content"
-                                aria-required="true"
                                 aria-label="Description"
                                 onChange={e =>
                                 this.context.updateNewNoteData(e.target.name, e.target.value)
                                 } 
+                                required
                             />
                         <label htmlFor="folders">Select a Folder: </label>
                             <select
