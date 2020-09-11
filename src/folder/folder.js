@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './folder.css';
 
 export default function Folder(props) {
@@ -17,4 +18,9 @@ export default function Folder(props) {
             </li>
         </div>
   )
+}
+
+Folder.propTypes = {
+    highlight: PropTypes.bool,
+    folder: PropTypes.object
 }

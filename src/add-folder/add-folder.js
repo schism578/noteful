@@ -63,9 +63,7 @@ export default class AddFolder extends Component {
               onChange={(e) => this.updateFolderName(e)}
               required
             />
-          <button 
-            type="submit" 
-            disabled={this.validateFolderName()}>
+          <button type="submit">
           Submit
           </button>
         </form>
@@ -75,6 +73,5 @@ export default class AddFolder extends Component {
 }
 
 AddFolder.propTypes = {
-  //name: PropTypes.string.isRequired,
   history: PropTypes.object
 }

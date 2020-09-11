@@ -7,6 +7,9 @@ import '../note-page/note-page.css';
 
 export default class AddNote extends React.Component {
     static contextType = AppContext
+    state = {
+        error: null
+    }
 
     addNewNote = note => {
         note.modified = new Date(note.modified);
@@ -41,9 +44,14 @@ export default class AddNote extends React.Component {
         folderId: e.target.folders.value,
         modified: new Date(),
         }
-        console.log(newNote);
+        if (newNote.folderId === '0') {
+            this.setState({
+                error: 'Please select folder'
+            })
+        } else {
         this.addNewNote(newNote)
         this.props.history.push('/');
+        }
     }
 
     validateName = () => {
@@ -71,7 +79,7 @@ export default class AddNote extends React.Component {
                         <label htmlFor="name">
                             Name: 
                             {this.context.newNote.name.touched && (
-                                <ValidationError message={this.validateName} />
+                                <ValidationError message={this.validateName()} />
                             )}
                         </label>
                             <input
@@ -87,7 +95,7 @@ export default class AddNote extends React.Component {
                         <label>
                             Write the Note: 
                             {this.context.newNote.content.touched && (
-                                <ValidationError message={this.validateContent} />
+                                <ValidationError message={this.validateContent()} />
                             )}
                         </label>
                             <input 
@@ -107,13 +115,14 @@ export default class AddNote extends React.Component {
                                 aria-required="true"
                                 aria-label="Select a Folder"
                             >
+                                <option value='0'>Select Folder</option>
                                 {this.parseFolders()}
                             </select>
+                            {this.state.error && this.state.error}
                         <div className="note__button__group">
                             <button
                                 type="submit"
                                 className="note__button"
-                                disabled={this.validateName()}
                             >
                             Save
                             </button>
@@ -125,7 +134,5 @@ export default class AddNote extends React.Component {
 }
 
 AddNote.propTypes = {
-    history: PropTypes.object,
-    //name: PropTypes.string.isRequired,
-    //content: PropTypes.string.isRequired,
+    history: PropTypes.object
   }
