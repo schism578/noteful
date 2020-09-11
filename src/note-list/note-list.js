@@ -1,6 +1,7 @@
 import React from 'react';
 import AppContext from '../appContext';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Note from '../note/note';
 import NavButton from '../nav-button/nav-button';
 
@@ -20,22 +21,26 @@ export default class NoteList extends React.Component {
                 name={note.name}
                 note={note}
                 />
+              )
             )
-          )
-        }
+          }
         </ul>
         <div className='NoteList__button-container'>
-        <NavButton
-          tag={NavLink}
-          to='/add-note'
-          type='button'
-          className='NoteList__add-note-button'
-        >
-          <br />
-          Add Note
-        </NavButton>
+          <NavButton
+            tag={NavLink}
+            to='/add-note'
+            type='button'
+            className='NoteList__add-note-button'
+          >
+            <br />
+            Add Note
+          </NavButton>
+        </div>
       </div>
-    </div>
     )
   }
+}
+
+NoteList.propTypes = {
+  match: PropTypes.object
 }

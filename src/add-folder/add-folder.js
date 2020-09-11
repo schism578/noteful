@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Store from '../store';
 import AppContext from '../appContext';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import ValidationError from '../ValidationError';
-import './add-folder.css'
+import './add-folder.css';
 
 
 export default class AddFolder extends Component {
@@ -49,31 +49,32 @@ export default class AddFolder extends Component {
           <h2 className='add-folder-header'>Add A New Folder:</h2>
         </header>
         <form className="add-folder-form" onSubmit={e => this.handleSubmit(e)}>
-        <label htmlFor="newFolder">
-          Name:
-        {this.context.newFolder.touched && (
-          <ValidationError message={this.validateFolderName()} />
-          )}  
-        </label>
-        <input
-        type="text"
-        name="newFolder"
-        id="newFolder"
-        aria-required="true"
-        aria-label="Name"
-        onChange={(e) => this.updateFolderName(e)}/>
-        <button 
-          type="submit" 
-          disabled={this.validateFolderName()}>
-        Submit
-        </button>
-      </form>
+          <label htmlFor="newFolder">
+            Name:
+            {this.context.newFolder.touched && (
+            <ValidationError message={this.validateFolderName()} />
+            )}  
+          </label>
+            <input
+              type="text"
+              name="newFolder"
+              id="newFolder"
+              aria-label="Name"
+              onChange={(e) => this.updateFolderName(e)}
+              required
+            />
+          <button 
+            type="submit" 
+            disabled={this.validateFolderName()}>
+          Submit
+          </button>
+        </form>
       </>
     )
   }
 }
 
 AddFolder.propTypes = {
-  name: PropTypes.string.isRequired,
+  //name: PropTypes.string.isRequired,
   history: PropTypes.object
 }

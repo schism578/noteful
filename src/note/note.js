@@ -38,7 +38,7 @@ class Note extends React.Component {
       const { name, id, modified } = this.props.note
     return (
         <AppContext.Consumer>
-            {(context) => (
+            {() => (
             <div>
                 <li key={id} className='Note'>
                     <NavLink to={`/notes/${id}`}>

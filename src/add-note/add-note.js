@@ -24,6 +24,7 @@ export default class AddNote extends React.Component {
         })
         .then(resJSON => this.context.handleAddNote(resJSON))
     }
+
     parseFolders = () => {
         return this.context.folders.map(folder => (
         <option key={folder.id} name={folder.id} value={folder.id}>
@@ -51,6 +52,12 @@ export default class AddNote extends React.Component {
         }
       }
 
+    validateContent = () => {
+        if (this.context.newNote.content.value.length === 0) {
+          return 'Content is required'
+        }
+      }
+
     render () {
         return (
             <>
@@ -61,58 +68,64 @@ export default class AddNote extends React.Component {
                     className="add-note-form"
                     onSubmit={e => this.handleFormSubmit(e)}
                     >
-                    <label htmlFor="name">
-                        Name
-                        {this.context.newNote.name.touched && (
-                            <ValidationError message={this.validateFolderName} />
-                        )}
-                    </label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        aria-required="true"
-                        aria-label="Name"
-                        onChange={e =>
-                        this.context.updateNewNoteData(e.target.name, e.target.value)
-                        }
-                    />
-                <h2>Write the Note:</h2>
-                    <input 
-                        type="text"
-                        name="content"
-                        id="content"
-                        aria-required="true"
-                        aria-label="Description"
-                        onChange={e =>
-                          this.context.updateNewNoteData(e.target.name, e.target.value)
-                        } 
-                    />
-                <label htmlFor="folders">Select a Folder:</label>
-                <select
-                    name="folders"
-                    id="folders"
-                    aria-required="true"
-                    aria-label="Select a Folder"
-                >
-                    {this.parseFolders()}
-                </select>
-                <div className="note__button__group">
-                    <button
-                        type="submit"
-                        className="note__button"
-                        disabled={this.validateName()}>
-                    Save
-                    </button>
-                </div>
-            </form>
-        </>
+                        <label htmlFor="name">
+                            Name: 
+                            {this.context.newNote.name.touched && (
+                                <ValidationError message={this.validateName} />
+                            )}
+                        </label>
+                            <input
+                                type="text"
+                                name="name"
+                                id="name"
+                                aria-label="Name"
+                                onChange={e =>
+                                this.context.updateNewNoteData(e.target.name, e.target.value)
+                                }
+                                required
+                            />
+                        <label>
+                            Write the Note: 
+                            {this.context.newNote.content.touched && (
+                                <ValidationError message={this.validateContent} />
+                            )}
+                        </label>
+                            <input 
+                                type="text"
+                                name="content"
+                                id="content"
+                                aria-required="true"
+                                aria-label="Description"
+                                onChange={e =>
+                                this.context.updateNewNoteData(e.target.name, e.target.value)
+                                } 
+                            />
+                        <label htmlFor="folders">Select a Folder: </label>
+                            <select
+                                name="folders"
+                                id="folders"
+                                aria-required="true"
+                                aria-label="Select a Folder"
+                            >
+                                {this.parseFolders()}
+                            </select>
+                        <div className="note__button__group">
+                            <button
+                                type="submit"
+                                className="note__button"
+                                disabled={this.validateName()}
+                            >
+                            Save
+                            </button>
+                        </div>
+                    </form>
+            </>
         )
     }
 }
 
 AddNote.propTypes = {
     history: PropTypes.object,
-    name: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired
+    //name: PropTypes.string.isRequired,
+    //content: PropTypes.string.isRequired,
   }

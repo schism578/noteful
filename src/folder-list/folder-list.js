@@ -12,31 +12,31 @@ export default function FolderList(props) {
 
     return (
       <div>
-      <ul>
-        {folders.map(folder => (
-              <Folder
-              key={folder.id}
-              name={folder.name}
-              folder={folder}
-              highlight={aFolder && folder.id === aFolder.id}
-              />
+        <ul>
+          {folders.map(folder => (
+                <Folder
+                key={folder.id}
+                name={folder.name}
+                folder={folder}
+                highlight={aFolder && folder.id === aFolder.id}
+                />
+              )
             )
-          )
-        }
-      </ul>
-      <div className='FolderList__button-wrapper'>
-      <NavButton
-        tag={NavLink}
-        to='/add-folder'
-        type='button'
-        className='FolderList__add-folder-button'
-      >
-        <br />
-        Add Folder
-      </NavButton>
+          }
+        </ul>
+        <div className='FolderList__button-wrapper'>
+          <NavButton
+            tag={NavLink}
+            to='/add-folder'
+            type='button'
+            className='FolderList__add-folder-button'
+          >
+            <br />
+            Add Folder
+          </NavButton>
+        </div>
       </div>
-    </div>
-  )
+    )
 }
 
 FolderList.propTypes = {
