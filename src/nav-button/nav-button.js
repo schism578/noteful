@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './nav-button.css';
 
 export default function NavButton(props) {
@@ -16,4 +17,11 @@ export default function NavButton(props) {
 
 NavButton.defaultProps ={
   tag: 'a',
+}
+
+NavButton.propTypes = {
+  tag: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  children: PropTypes.array.isRequired,
+  match: PropTypes.object
 }

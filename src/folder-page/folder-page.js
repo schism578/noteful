@@ -22,5 +22,6 @@ export default function FolderPage(props) {
 }
 
 FolderPage.propTypes = {
-    folder: PropTypes.object
+    folder: PropTypes.object,
+    highlight: PropTypes.bool
 }

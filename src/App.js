@@ -159,19 +159,23 @@ class App extends Component {
                         <Route
                             path='/folders/:folderId'
                             render={(routeProps) =>
+                          <ErrorBoundary>
                             <FolderList
                                 folders={this.state.folders}
                                 aFolder={this.state.folders.find(folder => folder.id === routeProps.match.params.folderId)}
                             />
+                          </ErrorBoundary>
                             }
                         />
                         <Route
                             path='/notes/:notesId'
                             render={(routeProps) =>
+                          <ErrorBoundary>
                             <FolderPage
                                 note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)}
                                 folder={this.state.folders.find(folder => folder.id === (this.state.notes.find(note => note.id === routeProps.match.params.notesId)).folderId) }
                             />
+                          </ErrorBoundary>
                             }
                         />
                       </div>

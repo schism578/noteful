@@ -63,6 +63,7 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
+  note: PropTypes.object,
   id: PropTypes.string,
   name: PropTypes.string,
   modified: PropTypes.string
