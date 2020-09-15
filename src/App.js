@@ -146,7 +146,6 @@ class App extends Component {
     }
     return (
         <div className='App'>
-          <ErrorBoundary>
             <main>
                 <header className='App-header'>
                     <NavLink to={`/`}>
@@ -183,28 +182,35 @@ class App extends Component {
                       <div className='note-list'>
                         <Route 
                             exact path='/' 
-                            component={() => <NoteList notes={this.state.notes} />} 
+                            component={() => 
+                            <ErrorBoundary>
+                              <NoteList notes={this.state.notes} />
+                           </ErrorBoundary>} 
                         />
-                        <Route
-                            path='/folders/:folderId'
-                            component={NoteList}
-                        />
-                        <Route path="/add-folder" component={AddFolder} />
-                        <Route path="/add-note" component={AddNote} />
+                        <ErrorBoundary>
+                          <Route path='/folders/:folderId' component={NoteList} />
+                        </ErrorBoundary>
+                        <ErrorBoundary>
+                          <Route path="/add-folder" component={AddFolder} />
+                        </ErrorBoundary>
+                        <ErrorBoundary>
+                          <Route path="/add-note" component={AddNote} />
+                        </ErrorBoundary>
                         <Route 
                             path='/notes/:notesId'
                             render={(routeProps) =>
-                            <NotePage
+                            <ErrorBoundary>
+                              <NotePage
                                 note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)}
                                 {...routeProps} 
-                                />
+                              />
+                            </ErrorBoundary>
                             }
                         />
                       </div>
                     </AppContext.Provider>
                 </ul>
             </main>
-          </ErrorBoundary>
         </div>
   );
 }
