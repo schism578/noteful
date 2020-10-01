@@ -1,7 +1,7 @@
 export default {
 
-  folders_API_ENDPOINT: `http://localhost:8000/api/folders`,
-  notes_API_ENDPOINT: `http://localhost:8000/api/notes`,
+  folders_API_ENDPOINT: `http://localhost:8000/folders`,
+  notes_API_ENDPOINT: `http://localhost:8000/notes`,
 
     "folders": [
       {
