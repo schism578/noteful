@@ -1,7 +1,7 @@
 export default {
 
-  folders_API_ENDPOINT: `http://localhost:8000/folders`,
-  notes_API_ENDPOINT: `http://localhost:8000/notes`,
+  folders_API_ENDPOINT: `https://rocky-temple-14187.herokuapp.com/folders`,
+  notes_API_ENDPOINT: `https://rocky-temple-14187.herokuapp.com/notes`,
 
     "folders": [
       {
