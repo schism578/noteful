@@ -64,7 +64,7 @@ class App extends Component {
     fetch(Store.folders_API_ENDPOINT, {
       method: 'GET',
       headers: {
-        "Authorization": "Bearer 1a4d99a8-154c-406d-808c-f016b7501225",
+        'Authorization': `Bearer ${config.API_KEY}`,
         'content-type': 'application/json',
       }
     })
@@ -80,7 +80,7 @@ class App extends Component {
       fetch(Store.notes_API_ENDPOINT, {
         method: 'GET',
         headers: {
-          "Authorization": "Bearer 1a4d99a8-154c-406d-808c-f016b7501225",
+          'Authorization': `Bearer ${config.API_KEY}`,
           'content-type': 'application/json',
         }
       })

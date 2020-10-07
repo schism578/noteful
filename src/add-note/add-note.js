@@ -17,7 +17,7 @@ export default class AddNote extends React.Component {
         fetch(`${Store.notes_API_ENDPOINT}/`, {
         method: 'POST',
         headers: {
-            "Authorization": "Bearer 1a4d99a8-154c-406d-808c-f016b7501225",
+            'Authorization': `Bearer ${config.API_KEY}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(note),
