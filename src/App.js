@@ -8,6 +8,7 @@ import FolderPage from './folder-page/folder-page';
 import AddFolder from './add-folder/add-folder';
 import AddNote from './add-note/add-note';
 import ErrorBoundary from './error-boundary';
+import config from './config';
 import Store from './store';
 import './App.css';
 

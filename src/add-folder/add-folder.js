@@ -3,6 +3,7 @@ import Store from '../store';
 import AppContext from '../appContext';
 import PropTypes from 'prop-types';
 import ValidationError from '../ValidationError';
+import config from '../config';
 import './add-folder.css';
 
 

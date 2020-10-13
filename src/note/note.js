@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AppContext from '../appContext';
 import { withRouter } from "react-router";
 //import { format } from 'date-fns';
+import config from '../config';
 import Store from '../store';
 import './note.css';
 
