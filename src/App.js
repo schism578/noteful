@@ -175,7 +175,7 @@ class App extends Component {
                           <ErrorBoundary>
                             <FolderPage
                                 note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)}
-                                folder={this.state.folders.find(folder => folder.id === (this.state.notes.find(note => note.id === routeProps.match.params.notesId)).folderId) }
+                                folder={this.state.folders.find(folder => folder.id === (this.state.notes.find(note => note.id == routeProps.match.params.notesId)).folderId) }
                             />
                           </ErrorBoundary>
                             }
@@ -204,7 +204,7 @@ class App extends Component {
                             render={(routeProps) =>
                             <ErrorBoundary>
                               <NotePage
-                                note={this.state.notes.find(note => note.id === routeProps.match.params.notesId)}
+                                note={this.state.notes.find(note => note.id == routeProps.match.params.notesId)}
                                 {...routeProps} 
                               />
                             </ErrorBoundary>
