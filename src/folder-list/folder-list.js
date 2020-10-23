@@ -16,7 +16,7 @@ export default function FolderList(props) {
           {folders.map(folder => (
                 <Folder
                 key={folder.id}
-                name={folder.name}
+                name={folder.folder_name}
                 folder={folder}
                 highlight={aFolder && folder.id === aFolder.id}
                 />

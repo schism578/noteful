@@ -13,7 +13,7 @@ export default function FolderPage(props) {
             <div>
                 <li key={folder.id} className={`folder-item ${props.highlight} ? 'folder-highlight' : ''`}>
                     <NavLink to={`/folders/${folder.id}`}>
-                        <h3 className='folder-title'>{folder.name}</h3>
+                        <h3 className='folder-title'>{folder.folder_name}</h3>
                     </NavLink>
                 </li>
             </div>

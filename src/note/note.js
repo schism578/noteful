@@ -44,7 +44,7 @@ class Note extends React.Component {
             <div>
                 <li key={id} className='Note'>
                     <NavLink to={`/notes/${id}`}>
-                        <h3 className='note-title'>{name}</h3>
+                        <h3 className='note-name'>{name}</h3>
                     </NavLink>
                     <p className='mod-date'>{modified}</p>
                     <div className='Note-buttons'>

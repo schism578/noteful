@@ -20,10 +20,10 @@ class App extends Component {
     newFolder: {
       hasError: false,
       touched: false,
-      name: '',
+      folder_name: '',
     },
     newNote: {
-      name: {
+      note_name: {
         touched: false,
         value: '',
       },
@@ -95,12 +95,12 @@ class App extends Component {
         .catch(error => this.setState({ error }))
   }
 
-  updateNewFolderName = name => {
+  updateNewFolderName = folder_name => {
     this.setState({
       newFolder: {
         hasError: false,
         touched: true,
-        name: name,
+        folder_name: folder_name,
       },
     })
   }
