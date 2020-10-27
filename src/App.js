@@ -20,14 +20,14 @@ class App extends Component {
     newFolder: {
       hasError: false,
       touched: false,
-      folder_name: '',
+      name: '',
     },
     newNote: {
-      note_name: {
+      name: {
         touched: false,
         value: '',
       },
-      folder_id: {
+      folderId: {
         touched: false,
         value: '',
       },
@@ -65,7 +65,7 @@ class App extends Component {
     fetch(Store.folders_API_ENDPOINT, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${config.API_KEY}`,
+        'Authorization': `Bearer ${config.API_TOKEN}`,
         'content-type': 'application/json',
       }
     })
@@ -81,7 +81,7 @@ class App extends Component {
       fetch(Store.notes_API_ENDPOINT, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${config.API_KEY}`,
+          'Authorization': `Bearer ${config.API_TOKEN}`,
           'content-type': 'application/json',
         }
       })
@@ -95,12 +95,12 @@ class App extends Component {
         .catch(error => this.setState({ error }))
   }
 
-  updateNewFolderName = folder_name => {
+  updateNewFolderName = name => {
     this.setState({
       newFolder: {
         hasError: false,
         touched: true,
-        folder_name: folder_name,
+        name: name,
       },
     })
   }

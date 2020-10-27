@@ -10,7 +10,7 @@ export default class NoteList extends React.Component {
 
   render() {
     const { notes } = this.context
-    const filteredNotes = this.props.match ? notes.filter(note => note.folder_id === this.props.match.params.folder_id) : notes
+    const filteredNotes = this.props.match ? notes.filter(note => note.folderId == this.props.match.params.folderId) : notes
 
     return (
       <div>

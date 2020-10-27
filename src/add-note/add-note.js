@@ -18,7 +18,7 @@ export default class AddNote extends React.Component {
         fetch(`${Store.notes_API_ENDPOINT}`, {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${config.API_KEY}`,
+            'Authorization': `Bearer ${config.API_TOKEN}`,
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(note),
@@ -80,7 +80,7 @@ export default class AddNote extends React.Component {
                     >
                         <label htmlFor="name">
                             Name: 
-                            {this.context.newNote.note_name.touched && (
+                            {this.context.newNote.name.touched && (
                                 <ValidationError message={this.validateName()} />
                             )}
                         </label>
@@ -90,7 +90,7 @@ export default class AddNote extends React.Component {
                                 id="name"
                                 aria-label="Name"
                                 onChange={e =>
-                                this.context.updateNewNoteData(e.target.note_name, e.target.value)
+                                this.context.updateNewNoteData(e.target.name, e.target.value)
                                 }
                                 required
                             />

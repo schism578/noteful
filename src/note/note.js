@@ -19,7 +19,7 @@ class Note extends React.Component {
       fetch(`${Store.notes_API_ENDPOINT}/${this.props.note.id}`, {
         method: 'DELETE',
         headers: {
-          'Authorization': `Bearer ${config.API_KEY}`,
+          'Authorization': `Bearer ${config.API_TOKEN}`,
           'content-type': 'application/json'
         },
       })

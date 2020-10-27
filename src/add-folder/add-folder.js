@@ -10,14 +10,14 @@ import './add-folder.css';
 export default class AddFolder extends Component {
   static contextType = AppContext;
 
-  addFolder = (folder_name) => {
+  addFolder = (name) => {
     fetch(`${Store.folders_API_ENDPOINT}`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${config.API_KEY}`,
+          'Authorization': `Bearer ${config.API_TOKEN}`,
           'content-type': 'application/json',
         },
-        body: JSON.stringify({folder_name})
+        body: JSON.stringify({name})
       }
     )
     .then(res => res.json())
@@ -37,9 +37,9 @@ export default class AddFolder extends Component {
   }
 
   validateFolderName() {
-    if (this.context.newFolder.folder_name.trim() === 0) {
+    if (this.context.newFolder.name.trim() === 0) {
       return 'Must be more than 0 characters.'
-    } else if ( this.context.newFolder.folder_name.trim().length <= 3 ) {
+    } else if ( this.context.newFolder.name.trim().length <= 3 ) {
       return 'Must be more than 3 characters.'
     }
   }
